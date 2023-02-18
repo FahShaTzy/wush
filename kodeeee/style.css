@@ -1,0 +1,126 @@
+html { transition: 200ms; }
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 20% 8% 67% 5%;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    cursor: default;
+}
+header .topbar {
+    display: none;
+    position: fixed;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+header .topbar :is( .info, .name ) { display: none; }
+header .title {
+    width: 100%;
+    background-color: darkcyan;
+    font-size: 130%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    background-color: darkgreen;
+    cursor: default;
+}
+nav.nav {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat( 3, minmax( 100px, 10% ) );
+    justify-content: center;
+}
+nav.nav div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 150ms ease-out;
+}
+nav.nav-small-screen {
+    display: none;
+    width: 150px;
+    height: 77vh;
+    position: fixed;
+    bottom: 0;
+    left: -150px;
+}
+nav.nav-small-screen .nav {
+    display: grid;
+    grid-template-rows: repeat( 3,  60px );
+    justify-content: center;
+    align-items: center;
+}
+nav.nav-small-screen .nav div {
+    width: 150px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 150ms ease-out;
+}
+:is( .nav, .nav-small-screen .nav ) div:hover { background-color: rgb(50, 150, 30); }
+nav.nav-small-screen .button {
+    width: 20px;
+    height: 20px;
+    background-color: orange;
+    transform: translateX( 20px );
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+main {
+    width: 100%;
+    background-color: darkblue;
+}
+
+footer {
+    width: 100%;
+    background-color: darkviolet;
+    cursor: default;
+}
+footer .options {
+    width: 200px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat( 3, minmax( 100px, 10% ) );
+}
+footer .options div { transition: 200ms ease-out; }
+footer .options div:hover { background-color: rgb(140, 50, 180); }
+footer .options-small-screen {
+    display: none;
+    width: 20%;
+    height: 100%;
+}
+footer .show-options-small-screen {
+    display: none;
+    width: 120px;
+    position: fixed;
+    bottom: 47px;
+    background-color: gray;
+    grid-auto-rows: 50px;
+}
+
+
+@media screen and ( max-width: 576px ) {
+    body { grid-template-rows: 23% 70% 7%; }
+    header .topbar { font-size: 80%; }
+    header .title { font-size: 100%; }
+    nav.nav { display: none; }
+    nav.nav-small-screen { display: grid; }
+    footer .options { display: none; }
+    footer .options-small-screen { display: grid; }
+}
