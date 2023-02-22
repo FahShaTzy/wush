@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        script { display: none; }
+    </style>
+    <script src="build/jquery/jquery-3.6.3.js"></script>
+    <script src="build/jquery/jquery-ui.js"></script>
+</head>
+<body>
+    <header>
+        <div class="topbar">
+            <div class="info">
+                <h5>Dibuat oleh FahriTzy</h5>
+            </div>
+            <div class="name">
+                <h5>Selamat datang <span>untuk Anda</span>!</h5>
+            </div>
+        </div>
+        <div class="title">
+            <h1>FahShaTzy Corporation</h1>
+        </div>
+    </header>
+    <nav class="nav">
+        <div class="home">
+            <h3>HOME</h3>
+        </div>
+        <div class="apps">
+            <h3>APLIKASI</h3>
+        </div>
+        <div class="projects">
+            <h3>PROJEK</h3>
+        </div>
+    </nav>
+    <nav class="nav-small-screen">
+        <div class="nav">
+            <div class="top">
+                <div class="home-small-screen">
+                    <h3>HOME</h3>
+                </div>
+                <div class="apps-small-screen">
+                    <h3>APLIKASI</h3>
+                </div>
+                <div class="projects-small-screen">
+                    <h3>PROJEK</h3>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="user-data-small-screen">F</div>
+                <div class="translate-small-screen">S</div>
+                <div class="theme-small-screen">A</div>
+            </div>
+        </div>
+        <div class="button">F</div>
+    </nav>
+    <main>
+        
+    </main>
+    <footer>
+        <div class="options">
+            <div class="user-data">
+                <b>DATA PENGGUNA</b>
+            </div>
+            <div class="translate">
+                <b>TERJEMAHKAN</b>
+            </div>
+            <div class="theme">
+                <b>TEMA</b>
+            </div>
+        </div>
+    </footer>
+    <script>
+        'use strict';
+        $( function () {
+
+            // Ketika "header" ditekan, munculkan "div.topbar"
+            let isFunctionBeingExecuted = false;
+            $( 'header .title h1' ).click( function () {
+                if ( isFunctionBeingExecuted ) return;
+                isFunctionBeingExecuted = true;
+                $( 'header .topbar' ).css( 'display', 'flex' );
+                $( 'header .topbar .info' ).fadeToggle().delay( 1000 ).fadeToggle();
+                $( 'header .topbar .name' ).delay( 2000 ).fadeToggle().delay( 1000 ).fadeToggle();
+                setTimeout( () => isFunctionBeingExecuted = false, 3800 );
+            } );
+
+            // Ketika "nav.nav-small-screen div.button" disentuh, munculkan "nav.nav-small-screen div.nav" dan segala isinya
+            $( document ).click( function ( event ) {
+                $( 'nav.nav-small-screen ' ).animate( {
+                    left:
+                        $( 'nav.nav-small-screen' ).css( 'left' ) == '-150px' &&
+                        event.target.className == 'button' ? 0 : '-150px'
+                }, {
+                    duration:
+                        $( 'nav.nav-small-screen' ).css( 'left' ) == '-150px' &&
+                        event.target.className == 'button' ? 1000 : 300,
+                    easing: 'easeOutExpo',
+                    queue: false
+                } );
+            } );
+
+        } );
+    </script>
+</body>
+</html>
