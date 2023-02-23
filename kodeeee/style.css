@@ -113,7 +113,7 @@ footer {
 footer .options {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat( 3, minmax( 100px, 10% ) );
+    grid-template-columns: repeat( 3, minmax( 130px, 10% ) );
 }
 footer .options div {
     text-align: center;
