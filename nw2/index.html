@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../../sumber/main.css">
+    <style>
+        body { cursor: grab; }
+        body:active { cursor: grabbing; }
+        #count {
+            width: 25px;
+			height: 20px;
+			background-color: white;
+			color: black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-weight: bold;
+			position: fixed;
+			top: 0;
+			right: 0;
+			z-index: 9999;
+        }
+		#titik {
+			width: 10px;
+			height: 10px;
+			border-radius: 5px;
+			background-color: white;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate( -50%, -50% );
+		}
+		#blocker {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.5);
+		}
+
+		#instructions {
+			width: 100%;
+			height: 100%;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			text-align: center;
+			font-size: 14px;
+			cursor: pointer;
+		}
+		#play {
+			width: 50px;
+			height: 30px;
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			background-color: white;
+			font-size: large;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: black;
+			cursor: pointer;
+		}
+    </style>
+</head>
+<body>
+
+    <!-- <div id="canvas"></div> -->
+	<!-- <div id="titik"></div> -->
+    <div id="count"></div>
+	<!-- <div id="blocker">
+		<div id="instructions">
+			<p style="font-size:36px">
+				Click to play
+			</p>
+			<p>
+				Move: WASD<br/>
+				Jump: SPACE<br/>
+				Look: MOUSE
+			</p>
+		</div>
+	</div> -->
+	<!-- <div id="play">Play</div> -->
+
+    <script type="importmap">
+		{
+			"imports": {
+				"three": "../../sumber/three.js/build/three.module.js",
+				"three/addons/": "../../sumber/three.js/examples/jsm/"
+			}
+		}
+	</script>
+
+    <!-- <script src="script001.js" type="module"></script> -->
+    <!-- <script src="script002.js" type="module"></script> -->
+    <!-- <script src="script003.js" type="module"></script> -->
+    <!-- <script src="script004.js" type="module"></script> -->
+    <!-- <script src="script005.js" type="module"></script> -->
+    <!-- <script src="script006.js" type="module"></script> -->
+    <!-- <script src="script007.js" type="module"></script> -->
+    <!-- <script src="script008.js" type="module"></script> -->
+    <!-- <script src="threejs-njajal.js" type="module"></script> -->
+	<!-- <script src="script009.js" type="module"></script> -->
+	<script src="script010.js" type="module"></script>
+
+</body>
+</html>

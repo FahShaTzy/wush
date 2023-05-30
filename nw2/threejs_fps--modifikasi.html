@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>cannon.js + three.js - physics shooter</title>
+	<link rel="stylesheet" href="../../sumber/cannon-es/examples/css/style.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+	<style>
+		body { cursor: grab }
+		body:active { cursor: grabbing }
+		#bola {
+			width: 25px;
+			height: 20px;
+			background-color: white;
+			color: black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-weight: bold;
+			position: fixed;
+			top: 0;
+			right: 0;
+			z-index: 9999;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="bola"></div>
+
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "../../sumber/three.js/build/three.module.js",
+				"three/addons/": "../../sumber/three.js/examples/jsm/"
+			}
+		}
+	</script>
+
+	<script src="threejs_fps--modifikasi.js" type="module"></script>
+</body>
+</html>
