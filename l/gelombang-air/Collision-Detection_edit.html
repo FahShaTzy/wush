@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Collision Detection (Three.js)</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel=stylesheet href="../../../sumber/main.css"/>
+</head>
+<body>
+
+<div id="message"></div>
+
+<!-- <script src="js/Three.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/Stats.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/THREEx.KeyboardState.js"></script>
+<script src="js/THREEx.FullScreen.js"></script>
+<script src="js/THREEx.WindowResize.js"></script> -->
+
+<!-- jQuery code to display an information button and box when clicked. -->
+<!-- <script src="js/jquery-1.9.1.js"></script>
+<script src="js/jquery-ui.js"></script>
+<link rel=stylesheet href="css/jquery-ui.css" />
+<link rel=stylesheet href="css/info.css"/>
+<script src="js/info.js"></script>
+<div id="infoButton"></div>
+<div id="infoBox" title="Demo Information">
+Controls:
+<ul>
+<li>Up/Down arrow: move in global Z direction
+<li>Left/Right arrow: move in global X direction
+<li>A/D: rotate left/right
+</ul>
+Notes:
+<br/>
+Collision rays originate at center of cube and extend to each vertex. Collisions are indicated by "hit" text above the Three.js region. Note that collisions do not register if rays intersect the back side of a mesh (in particular, if the origin of the rays are contained in the target mesh).
+<br/><br/>
+This three.js demo is part of a collection at
+<a href="http://stemkoski.github.io/Three.js/">http://stemkoski.github.io/Three.js/</a>
+</div> -->
+<!-- ------------------------------------------------------------ -->
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "../../../sumber/three.js/build/three.module.js",
+            "three/addons/": "../../../sumber/three.js/examples/jsm/"
+        }
+    }
+</script>
+
+<!-- <div id="ThreeJS" style="z-index: 2;"></div> -->
+<script type="module">
+
+    import * as THREE from '../../../sumber/three.js/build/three.module.js';
+    import { OrbitControls } from '../../../sumber/three.js/examples/jsm/controls/OrbitControls.js';
+    import Stats from '../../../sumber/three.js/examples/jsm/libs/stats.module.js';
+
+    let container, scene, camera, renderer, controls, stats;
+    const clock = new THREE.Clock();
+
+    let movingCube;
+    const collidableMeshList = [];
+
+    const arrowList = [];
+    const directionList = [];
+
+    let keydown;
+
+    init();
+    animate();
+
+    function init()  {
+
+        scene = new THREE.Scene();
+
+        camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 2000 );
+        camera.position.set( 0, 150, 400 );
+
+        renderer = new THREE.WebGLRenderer( { antialias: true } );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setAnimationLoop( animate );
+        document.body.appendChild( renderer.domElement );
+
+        controls = new OrbitControls( camera, renderer.domElement );
+        controls.enableDamping = true;
+        controls.maxPolarAngle = Math.PI / 2 - 0.005;
+        controls.update();
+
+        stats = new Stats();
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.bottom = '0px';
+        stats.domElement.style.zIndex = 100;
+        document.body.appendChild( stats.domElement );
+
+        const light = new THREE.PointLight( 0xffffff, 1000 );
+        light.position.set( 0, 250, 0 );
+        scene.add( light );
+
+        const floor = new THREE.Mesh(
+            new THREE.PlaneGeometry( 1000, 1000, 10, 10 ),
+            new THREE.MeshBasicMaterial( { color:0x444444 } )
+        );
+        floor.position.y = - 0.5;
+        floor.rotation.x = - Math.PI / 2;
+        scene.add( floor );
+
+        // let skyBoxGeometry = new THREE.BoxGeometry( 10000, 10000, 10000 );
+        // let skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff, side: THREE.BackSide } );
+        // let skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
+        // scene.add(skyBox);
+
+        movingCube = new THREE.Mesh(
+            new THREE.BoxGeometry( 50, 50, 50, 1, 1, 1 ),
+            new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } )
+        );
+        movingCube.position.set( 0, 25.1, 0 );
+        scene.add( movingCube );
+        console.log(movingCube);
+        
+        let wallGeometry = new THREE.BoxGeometry( 100, 100, 20, 1, 1, 1 );
+        let wallMaterial = new THREE.MeshBasicMaterial( {color: 0x8888ff} );
+        let wireMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true } );
+        
+        let wall = new THREE.Mesh( wallGeometry, wallMaterial );
+        wall.position.set( 100, 50, - 100 );
+        scene.add( wall );
+        collidableMeshList.push( wall );
+        
+        let wall2 = new THREE.Mesh( wallGeometry, wallMaterial );
+        wall2.position.set( - 150, 50, 0 );
+        wall2.rotation.y = Math.PI / 2;
+        scene.add( wall2 );
+        collidableMeshList.push( wall2 );
+
+    }
+
+    function clearText() { document.getElementById( 'message' ).innerText = '..........'; }
+
+    function appendText( txt ) { document.getElementById( 'message' ).innerText += txt; }
+
+    window.addEventListener( 'resize', () => {
+
+        randerer.setSize( window.innerWidth, window.innerHeight );
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+    } );
+
+    document.addEventListener( 'keydown', function ( event ) {
+
+        keydown = event.key;
+
+    } );
+
+    function animate() {
+
+        update();
+
+        controls.update();
+        stats.update();
+
+    }
+
+    function update() {
+
+        renderer.render( scene, camera );
+
+        const delta = clock.getDelta(); // seconds
+        const moveDistance = 200 * delta; // 200 pixels per second
+        const rotateAngle = Math.PI / 2 * delta;   // pi/2 radians (90 degrees) per second
+	
+        if ( keydown == 'a' ) movingCube.rotation.y += rotateAngle;
+        if ( keydown == 'd' ) movingCube.rotation.y -= rotateAngle;
+
+        if ( keydown == 'ArrowLeft' )  movingCube.position.x -= moveDistance;
+        if ( keydown == 'ArrowRight' ) movingCube.position.x += moveDistance;
+        if ( keydown == 'ArrowUp' )    movingCube.position.z -= moveDistance;
+        if ( keydown == 'ArrowDown' )  movingCube.position.z += moveDistance;
+
+        // collision detection:
+        //   determines if any of the rays from the cube's origin to each vertex
+        //   intersects any face of a mesh in the array of target meshes
+        //   for increased collision accuracy, add more vertices to the cube;
+        //   for example, new THREE.BoxGeometry( 64, 64, 64, 8, 8, 8, wireMaterial )
+        //   HOWEVER: when the origin of the ray is within the target mesh, collisions do not occur
+
+        let originPoint = movingCube.position.clone();
+
+        clearText();
+
+        for ( let vertexIndex = 0; vertexIndex < 8; vertexIndex ++ ) {
+
+            // let localVertex = movingCube.geometry.vertices[ vertexIndex ].clone();
+            // let globalVertex = localVertex.applyMatrix4( movingCube.matrix );
+            // let directionVector = globalVertex.sub( movingCube.position );
+
+            // let ray = new THREE.Raycaster( originPoint, directionVector.clone().normalize() );
+            let collisionResults = ray.intersectObjects( collidableMeshList );
+            // if ( collisionResults.length > 0 && collisionResults[0].distance < directionVector.length() ) appendText(" Hit ");
+            if ( collisionResults.length > 0 ) appendText(" Hit ");
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
