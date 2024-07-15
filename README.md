@@ -1,16 +1,13 @@
 # wush
-Tidak perlu berlebihan, semua bisa mengecewakan pada waktunya.
-Dipendam bikin pusing, diungkapkan bikin dijauhin.
-Apa yang bisa diharapkan dari kita (jika kita bersatu)?
+"Aku bersyukur untuk hidup yang kumiliki. Siapa yang tahu berapa lama kita hidup...?"
 
-FahShaTzy/wush berisi kode-kode tidak rahasia milik FahShaTzy.
-Selain kode-kode, di sini juga berisi kata-kata penting bermakna bukan buatan FahSha dan buatan FahSha.
-Cloning ke sini dipersilakan asal tidak menimbulkan ketegangan antara pihak yang me-cloning dengan FahSha.
-Kata-kata di sini tidak dilisensi, sehingga bisa digunakan secara bebas untuk keperluan pribadi maupun tidak pribadi.
+FahShaTzy/wush berisi kode-kode tidak rahasia milik siswa kelas XI-2.
+Selain kode-kode backup, di sini juga ada beberapa kode hasil melihat milik orang lain, contohnya ada di file glsl, yang mana saya pun tidak paham isinya. Setiap file di sini tidak memiliki lisensi, maka saya sendiri bebas menggunakannya tanpa terganggu pelanggaran hak cipta yang sesuai dengan ketentuan peraturan perundang-undangan yang berlaku.
 
 Terimakasih mau mampir :)
 
 ;;
 
 
-REVISION: 4
+README REVISION: 5
+CODE REVISION: TOO MUCH
