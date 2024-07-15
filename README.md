@@ -11,6 +11,6 @@ Terimakasih mau mampir :)
 ;;
 
 
-README REVISION: 5
+README REVISION: 5.1
 
 CODE REVISION: TOO MUCH
