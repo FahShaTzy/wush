@@ -480,6 +480,9 @@ footer {
     html {
         font-size: 62.5%;
     }
+    .hero {
+        background-image: url('../img/hero.png');
+    }
     .navbar {
         .navbar-nav {
             position: absolute;

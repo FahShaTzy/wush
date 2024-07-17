@@ -25,6 +25,25 @@ document.addEventListener( 'click', event => {
 
 } );
 
+fetch( 'https://alex21321312.github.io/devilgama-technology/index.html' )
+    .then( r => r.text() )
+    .then( t => {
+
+        const html = new DOMParser().parseFromString( t, 'text/html' );
+
+        const about = html.querySelector( 'div.content' ).children;
+        for ( i = 0; i < about.length; i -= - 1 ) document.getElementsByClassName( 'fetch1' )[ i ].textContent = about[ i ].textContent;
+
+        const pemilos = html.querySelector( 'div.product-content').children;
+        document.querySelector( 'div.product-content p' ).textContent = pemilos[ 1 ].textContent;
+
+        const ksn = html.getElementsByClassName( 'product-content')[ 1 ].children;
+        document.getElementsByClassName( 'product-content' )[ 1 ].children[ 1 ].textContent = ksn[ 1 ].textContent;
+
+        const proyek = html.getElementsByClassName( 'product-content')[ 2 ].children;
+        document.getElementsByClassName( 'product-content' )[ 2 ].children[ 1 ].textContent = proyek[ 1 ].textContent;
+
+} );
 
 /* UNUSED, JUST DON'T HAPUS */
 
