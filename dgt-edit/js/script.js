@@ -31,25 +31,24 @@ fetch( 'https://alex21321312.github.io/devilgama-technology/index.html' )
 
         const html = new DOMParser().parseFromString( t, 'text/html' );
 
-        const about = html.querySelector( 'div.content' ).children;
-        for ( i = 0; i < about.length; i -= - 1 ) document.getElementsByClassName( 'fetch1' )[ i ].textContent = about[ i ].textContent;
+        // tentang kami
+        html.querySelectorAll( 'div.content' ).forEach( ( n, i ) => {
+            document.getElementsByClassName( 'fetch1' )[ i ].textContent = n.children[ i  ].textContent;
+        } )
 
-        html.querySelectorAll( '.product-content' ).forEach( function ( node, index ) {
-
-            document.getElementsByClassName( 'product-content' )[ index ].children[ 1 ].textContent = node.textContent;
-            // console.log(node.textContent);
-
+        // tujuan
+        html.querySelectorAll( '.product-content' ).forEach( ( n, i ) => {
+            document.getElementsByClassName( 'product-content' )[ i ].children[ 1 ].textContent = n.children[ 1 ].textContent;
         } );
 
-        html.querySelectorAll( '.product-image' ).forEach( function ( node, index ) {
-
-            document.getElementsByClassName( 'product-image' )[ index ].children[ 0 ].src =
-                ( node.children[ 0 ].src ).replace(
-                    'https://fahshatzy.github.io/wush/dgt-edit/img/',
-                    'https://alex21321312.github.io/devilgama-technology/img/'
+        // gambar tujuan
+        html.querySelectorAll( '.product-image' ).forEach( ( n, i ) => {
+            document.getElementsByClassName( 'product-image' )[ i ].children[ 0 ].src =
+                ( n.children[ 0 ].src ).replace(
+                    ( window.location.href ).replace( 'index.html', '' ),
+                    'https://alex21321312.github.io/devilgama-technology/'
                 );
-
-        } )
+        } );
 
 } );
 
