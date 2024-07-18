@@ -45,7 +45,7 @@ fetch( 'https://alex21321312.github.io/devilgama-technology/index.html' )
 
             document.getElementsByClassName( 'product-image' )[ index ].children[ 0 ].src =
                 ( node.children[ 0 ].src ).replace(
-                    'file:///C:/Users/fahri/Documents/dgt-edit/img/',
+                    'https://fahshatzy.github.io/wush/dgt-edit/img/',
                     'https://alex21321312.github.io/devilgama-technology/img/'
                 );
 
