@@ -1,16 +1,21 @@
 # wush
 "Aku bersyukur untuk hidup yang kumiliki. Siapa yang tahu berapa lama kita hidup...?"
 
-FahShaTzy/wush berisi kode-kode tidak rahasia milik siswa kelas XI-2.
-Selain kode-kode backup, di sini juga ada beberapa kode hasil melihat milik orang lain, contohnya ada di file glsl, yang mana saya pun tidak paham isinya. Setiap file di sini tidak memiliki lisensi, maka saya sendiri bebas menggunakannya tanpa terganggu pelanggaran hak cipta yang sesuai dengan ketentuan peraturan perundang-undangan yang berlaku.
+1. Berhati-hati menjalani realita.
+2. Tebak-tebakan esok hari.
+3. Kemungkinan yang luas.
+4. Bertujuanlah supaya aman.
+5. Ingatlah supaya cukup.
+6. Tetep sama-sama ya, dikit lagi kok, besok udah kelas 12 terus lulus, ya meskipun aku ga tau si kamu bosen apa engga :)
 
-ada namanya Kementrian Agraria dan Tata Ruang/Badan Pertahanan Nasional....
+Coba baca-baca yang file "kata-kata" isinya kata-kata. Ya iyalah isinya kata-kata.
 
-Terimakasih mau mampir :)
+**Facta sunt potentiora verbis**  
+Artinya: *Tindakan lebih kuat daripada kata-kata.*
 
 ;;
 
 
-README REVISION: 5.1
+README REVISION: 6
 
 CODE REVISION: TOO MUCH
