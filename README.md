@@ -11,7 +11,7 @@
 Coba baca-baca yang file "kata-kata" isinya kata-kata. Ya iyalah isinya kata-kata.
 
 **Facta sunt potentiora verbis**  
-Artinya: *Tindakan lebih kuat daripada kata-kata.*
+*Tindakan lebih kuat daripada kata-kata.*
 
 ;;
 
